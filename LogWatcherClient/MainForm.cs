@@ -29,15 +29,23 @@ namespace LogWatcherClient
                 return;
             }
 
-            string name = textBox.Text;
-            if (string.IsNullOrWhiteSpace(name)) {
+            string serverName = serverNameTextBox.Text;
+            if (string.IsNullOrWhiteSpace(serverName))
+            {
+                MessageBox.Show("provide server name please.");
+                return;
+            }
+
+            string pipeName = pipeNameTextBox.Text;
+            if (string.IsNullOrWhiteSpace(pipeName)) 
+            {
                 MessageBox.Show("provide pipe name please.");
                 return;
             }
 
             try
             {
-                client = new NamedPipeClientStream(name);
+                client = new NamedPipeClientStream(serverName, pipeName);
                 client.Connect(100);
                 MessageBox.Show("connect successfully.");
                 connectButton.Enabled = false;
@@ -78,6 +86,11 @@ namespace LogWatcherClient
                 client = null;
                 connectButton.Enabled = true;
             }
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
 
         }
     }

@@ -52,7 +52,7 @@
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(366, 20);
             this.textBox.TabIndex = 2;
-            this.textBox.Text = "\\\\.\\pipe\\logwatcher";
+            this.textBox.Text = "logwatcher";
             // 
             // startButton
             // 

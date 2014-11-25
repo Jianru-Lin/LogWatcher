@@ -90,9 +90,9 @@ namespace LogWatcher
                 {
                     using (server = new NamedPipeServerStream(name))
                     {
-                        self.ReportProgress(0, new State("wait for connection."));
+                        self.ReportProgress(0, new State("waiting for connection."));
                         server.WaitForConnection();
-                        self.ReportProgress(0, new State("client arrived."));
+                        self.ReportProgress(0, new State("new connection established."));
                         using (StreamReader reader = new StreamReader(server, Encoding.Default, false, 4 * 1024, true))
                         {
                             while (true)
@@ -109,7 +109,7 @@ namespace LogWatcher
                                 }
                             }
                         }
-                        self.ReportProgress(0, new State("client left."));
+                        self.ReportProgress(0, new State("disconnected."));
 
                     }
                 }
