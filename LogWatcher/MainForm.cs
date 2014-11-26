@@ -9,13 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Pipes;
 using System.IO;
-using System.Text.RegularExpressions;
 
 namespace LogWatcher
 {
     public partial class MainForm : Form
     {
-        Dictionary<string, LogForm> map = new Dictionary<string,LogForm>();
+        LogForm logForm = new LogForm();
 
         class State
         {
@@ -54,28 +53,6 @@ namespace LogWatcher
 
             backgroundWorker.RunWorkerAsync(name);
             startButton.Enabled = false;
-        }
-
-        private void regexMatch(string text, out string module, out string content)
-        {
-            module = "";
-            content = "";
-            if (string.IsNullOrEmpty(text))
-            {
-                return;
-            }
-
-            Regex pattern = new Regex(@"\[([^\]]+)\]\s([^$]*)");
-            MatchCollection matches = pattern.Matches(text);
-            if (matches.Count == 0)
-            {
-                content = text;
-            }
-            else
-            {
-                module = matches[0].Groups[1].Value;
-                content = matches[0].Groups[2].Value;
-            }
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -139,22 +116,12 @@ namespace LogWatcher
             }
 
             string text = e.UserState as string;
-            
-            // 如果文本符合模块输出语法，则要输出到指定的模块窗口中
-            // 否则输出到全局窗口
+            logForm.Append(text);
+            logForm.Show();
+        }
 
-            string module, content;
-            regexMatch(text, out module, out content);
-            LogForm target = null;
-            if (!map.TryGetValue(module, out target))
-            {
-                target = new LogForm();
-                target.Text = string.IsNullOrEmpty(module) ? "Global" : module;
-                map[module] = target;
-                target.Show();
-            }
-
-            target.Append(text);
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
         }
 
     }
