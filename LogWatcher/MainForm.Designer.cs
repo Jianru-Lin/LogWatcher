@@ -31,8 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.startButton = new System.Windows.Forms.Button();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.richTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -64,37 +62,17 @@
             this.startButton.UseVisualStyleBackColor = true;
             this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
-            // backgroundWorker
-            // 
-            this.backgroundWorker.WorkerReportsProgress = true;
-            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
-            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
-            // 
-            // richTextBox
-            // 
-            this.richTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox.Location = new System.Drawing.Point(12, 80);
-            this.richTextBox.Name = "richTextBox";
-            this.richTextBox.ReadOnly = true;
-            this.richTextBox.Size = new System.Drawing.Size(366, 120);
-            this.richTextBox.TabIndex = 4;
-            this.richTextBox.Text = "";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 212);
-            this.Controls.Add(this.richTextBox);
+            this.ClientSize = new System.Drawing.Size(390, 107);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.label1);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "LogWatcher";
+            this.Text = "Start Named Pipe Server";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -106,8 +84,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox;
         private System.Windows.Forms.Button startButton;
-        private System.ComponentModel.BackgroundWorker backgroundWorker;
-        private System.Windows.Forms.RichTextBox richTextBox;
 
     }
 }
