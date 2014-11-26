@@ -79,11 +79,10 @@ namespace LogWatcher
                 treeView.Nodes.Add(mapItem.GetTreeNode());
             }
 
-            string line = content;
-            mapItem.AppendLine(line);
+            mapItem.AppendLine(content);
             if (mapItem == currentMapItem)
             {
-                richTextBox.AppendText(line);
+                richTextBox.AppendText(mapItem.GetLastLine());
             }
         }
 
@@ -182,16 +181,30 @@ namespace LogWatcher
 
         class MapItem
         {
-            public MapItem(string text)
+            public MapItem(string nodeText)
             {
+                this.nodeText = nodeText;
                 lines = new List<string>();
-                node = new TreeNode(text);
+                node = new TreeNode(nodeText + " (0)");
                 node.Tag = this;
             }
 
             public void AppendLine(string text)
             {
                 lines.Add(text);
+                node.Text = this.nodeText + " (" + lines.Count + ")";
+            }
+
+            public string GetLastLine()
+            {
+                if (lines == null || lines.Count < 1)
+                {
+                    return "";
+                }
+                else
+                {
+                    return lines[lines.Count - 1];
+                }
             }
 
             public string GetAllLines()
@@ -212,6 +225,7 @@ namespace LogWatcher
 
             List<string> lines;
             TreeNode node;
+            string nodeText;
         }
     }
 }
