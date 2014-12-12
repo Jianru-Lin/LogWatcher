@@ -116,7 +116,7 @@ namespace LogWatcher
                         self.ReportProgress(0, new State("waiting for connection."));
                         server.WaitForConnection();
                         self.ReportProgress(0, new State("new connection established."));
-                        using (StreamReader reader = new StreamReader(server, Encoding.Default, false, 4 * 1024, true))
+                        using (StreamReader reader = new StreamReader(server, Encoding.Default, false, 4 * 1024))
                         {
                             while (true)
                             {
