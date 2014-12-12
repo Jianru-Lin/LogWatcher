@@ -99,6 +99,7 @@
             this.richTextBox.Size = new System.Drawing.Size(419, 390);
             this.richTextBox.TabIndex = 3;
             this.richTextBox.Text = "";
+            this.richTextBox.WordWrap = false;
             // 
             // backgroundWorker
             // 
