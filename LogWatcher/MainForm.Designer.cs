@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.label1 = new System.Windows.Forms.Label();
             this.textBox = new System.Windows.Forms.TextBox();
             this.startButton = new System.Windows.Forms.Button();
@@ -71,6 +72,7 @@
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.textBox);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Start Named Pipe Server - LogWatcher";
